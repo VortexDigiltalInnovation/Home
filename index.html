@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="it" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vortex Digital Innovation - Vetrina Applicazioni PWA</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        vortex: {
+                            50: '#e6f7f8',
+                            100: '#cceef0',
+                            500: '#0d9488',
+                            600: '#0f766e',
+                            700: '#115e59',
+                            800: '#134e4a',
+                            900: '#042f2e',
+                            950: '#021a19'
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'glow': 'glow 3s ease-in-out infinite alternate',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-6px)' },
+                        },
+                        glow: {
+                            '0%': { opacity: '0.4' },
+                            '100%': { opacity: '0.8' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- QRCode Generator Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+        #qrcode-container img, #qrcode-container canvas {
+            display: block;
+            width: 100% !important;
+            height: 100% !important;
+            max-width: 160px;
+            max-height: 160px;
+            object-fit: contain;
+        }
+        .glass-card {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(2, 26, 25, 0.6) 100%);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans selection:bg-teal-500 selection:text-slate-950 overflow-x-hidden">
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-40 backdrop-blur-xl bg-slate-900/80 border-b border-slate-800/80 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-24 flex items-center justify-between">
+            <div class="flex items-center gap-4 group cursor-pointer">
+                <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-teal-900/50 border border-teal-500/40 flex items-center justify-center overflow-hidden shadow-xl shadow-teal-950/60 group-hover:scale-105 transition-transform duration-300 flex-shrink-0">
+                    <img src="Vortex Digital Logo Bicolore.jpeg" alt="Vortex Logo" class="w-full h-full object-cover">
+                </div>
+                <div>
+                    <span class="font-black text-lg sm:text-xl tracking-wider bg-gradient-to-r from-teal-400 via-cyan-300 to-teal-200 bg-clip-text text-transparent block">VORTEX DIGITAL</span>
+                    <span class="text-[11px] text-slate-400 tracking-widest uppercase font-semibold">Innovation Forging Apps</span>
+                </div>
+            </div>
+            
+            <nav class="flex items-center gap-6">
+                <a href="#apps" class="text-sm font-medium text-slate-300 hover:text-teal-400 transition-colors relative py-1 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-teal-400 hover:after:w-full after:transition-all">Applicazioni</a>
+                <a href="#features" class="text-sm font-medium text-slate-300 hover:text-teal-400 transition-colors relative py-1 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-teal-400 hover:after:w-full after:transition-all">Tecnologia PWA</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative py-14 px-4 sm:px-6 lg:px-8 overflow-hidden border-b border-slate-900 bg-gradient-to-b from-slate-900/60 via-slate-950 to-slate-950">
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[250px] bg-teal-500/10 blur-[100px] rounded-full pointer-events-none animate-glow"></div>
+        
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-400 text-xs font-bold mb-4 tracking-wider uppercase animate-float shadow-lg shadow-teal-950/50">
+                <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> Local-First • Privacy Totale • Zero Cloud
+            </div>
+            <h1 class="text-3xl sm:text-5xl font-black tracking-tight mb-4 text-white leading-tight">
+                Applicazioni Web Progressive <br>
+                <span class="bg-gradient-to-r from-teal-400 via-cyan-400 to-teal-200 bg-clip-text text-transparent drop-shadow-sm">Senza Compromessi</span>
+            </h1>
+            <p class="text-base sm:text-lg text-slate-300/90 mb-6 max-w-2xl mx-auto leading-relaxed font-light">
+                Strumenti digitali intelligenti e fulminei pensati per rivoluzionare la routine familiare, blindare i tuoi dati finanziari e semplificare la vita di tutti i giorni.
+            </p>
+            <div class="flex flex-wrap justify-center">
+                <a href="#apps" class="group relative bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-500 hover:to-cyan-500 text-slate-950 font-extrabold px-7 py-3.5 rounded-2xl shadow-xl shadow-teal-950/60 transition-all duration-300 flex items-center gap-2 hover:-translate-y-0.5 active:translate-y-0 text-sm">
+                    <i data-lucide="rocket" class="w-4 h-4 transition-transform group-hover:rotate-12"></i> Esplora le App
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content / App Catalog -->
+    <main id="apps" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow w-full">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+            <div>
+                <span class="text-teal-400 text-xs font-bold tracking-widest uppercase block mb-1">Vetrina Ufficiale</span>
+                <h2 class="text-2xl sm:text-3xl font-black tracking-tight text-white">Catalogo Applicazioni</h2>
+                <p class="text-slate-400 text-xs sm:text-sm mt-0.5">Seleziona un'app per avviarla istantaneamente, installarla o scoprirne i punti di forza.</p>
+            </div>
+            <!-- Filtri Categoria -->
+            <div id="category-filters" class="flex flex-wrap gap-1.5 bg-slate-900/80 p-1 rounded-xl border border-slate-800 shadow-inner">
+                <button onclick="filterApps('all')" class="category-btn active px-3.5 py-2 rounded-lg text-xs font-bold bg-teal-500 text-slate-950 shadow-md transition-all duration-300">Tutte</button>
+                <button onclick="filterApps('Famiglia')" class="category-btn px-3.5 py-2 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800/60 transition-all duration-300">Famiglia & Routine</button>
+                <button onclick="filterApps('Finanza')" class="category-btn px-3.5 py-2 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800/60 transition-all duration-300">Finanza & Patrimonio</button>
+                <button onclick="filterApps('Sicurezza')" class="category-btn px-3.5 py-2 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800/60 transition-all duration-300">Sicurezza & Utility</button>
+            </div>
+        </div>
+
+        <!-- Grid delle Applicazioni -->
+        <div id="apps-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Inserimento dinamico tramite JS -->
+        </div>
+    </main>
+
+    <!-- Features Section -->
+    <section id="features" class="border-t border-slate-900 bg-gradient-to-b from-slate-950 to-slate-900/40 py-14 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <span class="text-teal-400 text-xs font-bold tracking-widest uppercase block mb-1">Vantaggi PWA</span>
+                <h2 class="text-2xl sm:text-3xl font-black text-white mb-2 tracking-tight">Perché scegliere le nostre applicazioni?</h2>
+                <p class="text-xs sm:text-sm text-slate-400">La massima potenza tecnologica unita a una semplicità d'uso straordinaria.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass-card p-6 rounded-2xl border border-slate-800/80 hover:border-teal-500/40 transition-all duration-300 hover:-translate-y-1 shadow-xl group">
+                    <div class="w-10 h-10 rounded-xl bg-teal-500/10 text-teal-400 flex items-center justify-center mb-4 group-hover:bg-teal-500 group-hover:text-slate-950 transition-all duration-300 shadow-inner">
+                        <i data-lucide="zap" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-bold text-base text-white mb-2">Immediatezza Assoluta</h3>
+                    <p class="text-xs sm:text-sm text-slate-400/90 leading-relaxed">Si installano direttamente dal browser con un solo tocco, senza passare per gli store e senza pesanti download iniziali.</p>
+                </div>
+                <div class="glass-card p-6 rounded-2xl border border-slate-800/80 hover:border-teal-500/40 transition-all duration-300 hover:-translate-y-1 shadow-xl group">
+                    <div class="w-10 h-10 rounded-xl bg-teal-500/10 text-teal-400 flex items-center justify-center mb-4 group-hover:bg-teal-500 group-hover:text-slate-950 transition-all duration-300 shadow-inner">
+                        <i data-lucide="wifi-off" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-bold text-base text-white mb-2">Operative Anche Offline</h3>
+                    <p class="text-xs sm:text-sm text-slate-400/90 leading-relaxed">Grazie ai Service Worker avanzati, funzionano in modo impeccabile anche in assenza di connessione internet, ovunque ti trovi.</p>
+                </div>
+                <div class="glass-card p-6 rounded-2xl border border-slate-800/80 hover:border-teal-500/40 transition-all duration-300 hover:-translate-y-1 shadow-xl group">
+                    <div class="w-10 h-10 rounded-xl bg-teal-500/10 text-teal-400 flex items-center justify-center mb-4 group-hover:bg-teal-500 group-hover:text-slate-950 transition-all duration-300 shadow-inner">
+                        <i data-lucide="lock" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-bold text-base text-white mb-2">Sicurezza e Privacy Totale</h3>
+                    <p class="text-xs sm:text-sm text-slate-400/90 leading-relaxed">Nessun tracciamento cloud o server di terze parti. I tuoi dati restano esclusivamente sul tuo dispositivo protetti da crittografia.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-900 bg-slate-950 py-8 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl overflow-hidden border border-teal-500/30 shadow-md">
+                    <img src="Vortex Digital Logo Bicolore.jpeg" alt="Logo" class="w-full h-full object-cover">
+                </div>
+                <span class="text-xs sm:text-sm font-bold text-white tracking-wide">Vortex Digital Innovation</span>
+            </div>
+            <p class="text-xs text-slate-500 text-center">
+                &copy; 2026 Vortex Digital. Tutti i diritti riservati. Sviluppato con architettura Local-First PWA.
+            </p>
+        </div>
+    </footer>
+
+    <!-- MODALE QR CODE & INSTALLAZIONE -->
+    <div id="pwa-modal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md hidden flex items-center justify-center p-4 transition-all duration-300">
+        <div class="glass-card border border-slate-700/60 rounded-3xl max-w-md w-full p-6 shadow-2xl relative scale-95 transition-transform duration-300" id="modal-content">
+            <button onclick="closePwaModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-1.5 rounded-xl hover:bg-slate-800/50 transition-colors">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <div class="text-center mb-4">
+                <span id="modal-app-badge" class="px-3 py-0.5 rounded-full bg-teal-500/15 text-teal-400 text-[11px] font-bold uppercase tracking-wider border border-teal-500/30">Installazione PWA</span>
+                <h3 id="modal-app-title" class="text-xl font-black text-white mt-2">Installa Applicazione</h3>
+                <p id="modal-app-desc" class="text-xs text-slate-400 mt-0.5 leading-relaxed">Inquadra il QR code o usa i pulsanti rapidi.</p>
+            </div>
+            
+            <div class="bg-white p-3 rounded-2xl w-44 h-44 mx-auto flex items-center justify-center mb-5 shadow-2xl overflow-hidden ring-4 ring-teal-500/20" id="qrcode-container"></div>
+            
+            <div class="space-y-2.5">
+                <a id="modal-launch-btn" href="#" target="_blank" class="w-full bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-500 hover:to-cyan-500 text-slate-950 font-extrabold py-3 px-4 rounded-xl text-center transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-teal-950/50 hover:shadow-teal-500/20 text-sm">
+                    <i data-lucide="external-link" class="w-4 h-4"></i> Apri Applicazione Web
+                </a>
+                <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-3 text-[11px] text-slate-300 space-y-1 shadow-inner">
+                    <p class="font-bold text-teal-400 flex items-center gap-1 mb-0.5"><i data-lucide="smartphone" class="w-3.5 h-3.5"></i> Come installarla su smartphone:</p>
+                    <p>• <strong>Android (Chrome):</strong> Tocca i tre puntini e seleziona <span class="text-white font-semibold">"Aggiungi a schermata Home"</span>.</p>
+                    <p>• <strong>iOS (Safari):</strong> Tocca Condividi e seleziona <span class="text-white font-semibold">"Aggiungi alla schermata Home"</span>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Logica Portfolio -->
+    <script>
+        const apps = [
+            {
+                name: "Zaino Hero",
+                category: "Famiglia",
+                url: "https://vortexdigiltalinnovation.github.io/Zaino-Hero/",
+                image: "watermarked_img_15054441663610744763.jpg",
+                desc: "Ogni sera si accende una nuova partita! Con Zaino Hero, bambini e bambine affrontano sfide a tempo, missioni a livelli e gare di velocità per raccogliere punti e sbloccare premi veri scelti insieme ai genitori. Il modo perfetto per preparare lo zaino senza conflitti e svegliarsi con il sorriso.",
+                features: ["Sfide a Tempo", "Missioni & Livelli", "Premi Reali", "Vittoria Certificata"]
+            },
+            {
+                name: "Financial Dashboard",
+                category: "Finanza",
+                url: "https://vortexdigiltalinnovation.github.io/Financial-Dashboard-/",
+                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80",
+                desc: "Il centro di controllo definitivo per il tuo patrimonio. Monitora con precisione conti correnti, ETF, BTP, buoni postali e flussi di cassa. Grazie all'architettura Local-First e alla cifratura militare AES-GCM a 256 bit[cite: 9], i tuoi dati finanziari restano blindati sul tuo dispositivo, lontani da cloud e server esterni.",
+                features: ["Caveau AES-GCM 256-bit", "BTP, ETF & Buoni Postali", "AI Wealth Advisor[cite: 9, 10]", "Privacy 100% Locale"]
+            },
+            {
+                name: "Fidelity Wallet",
+                category: "Sicurezza",
+                url: "https://vortexdigiltalinnovation.github.io/Fidelity-Wallet/",
+                image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=600&q=80",
+                desc: "Dì addio al portafoglio gonfio e alle tessere smarrite. Fidelity Wallet centralizza tutte le tue carte fedeltà, codici a barre e documenti personali in un'unica app fulminea e intuitiva[cite: 5, 6]. Funziona al 100% offline anche nei negozi senza campo, offrendo accesso immediato alle casse e totale riservatezza[cite: 6].",
+                features: ["Scanner Codici a Barre", "100% Offline & Veloce[cite: 6]", "Zero Pubblicità[cite: 7]", "Backup JSON sicuro"]
+            },
+            {
+                name: "Vault PWA",
+                category: "Sicurezza",
+                url: "https://vortexdigiltalinnovation.github.io/Vault/",
+                image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80",
+                desc: "La tua cassaforte digitale tascabile. Custodisci password, credenziali e note riservate con la massima tranquillità. Senza sincronizzazioni cloud vulnerabili: l'archivio risiede unicamente nel tuo dispositivo protetto da chiave principale e sblocco biometrico, garantendo accesso istantaneo e sicuro[cite: 4].",
+                features: ["Caveau Locale Protetto[cite: 4]", "Copia rapida sicura[cite: 4]", "Backup .enc cifrato[cite: 11]", "Operativa Offline[cite: 4]"]
+            }
+        ];
+
+        let currentFilter = 'all';
+
+        function initApp() {
+            renderApps();
+            lucide.createIcons();
+        }
+
+        function renderApps() {
+            const grid = document.getElementById('apps-grid');
+            grid.innerHTML = '';
+
+            const filtered = currentFilter === 'all' 
+                ? apps 
+                : apps.filter(a => a.category === currentFilter);
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `<div class="col-span-full text-center py-12 text-slate-500 font-medium">Nessuna applicazione trovata in questa categoria.</div>`;
+                return;
+            }
+
+            filtered.forEach((app) => {
+                const card = document.createElement('div');
+                card.className = "glass-card rounded-3xl border border-slate-800 hover:border-teal-500/60 transition-all duration-500 flex flex-col overflow-hidden shadow-2xl group hover:-translate-y-1";
+                
+                let featuresHtml = '';
+                if (app.features && app.features.length > 0) {
+                    featuresHtml = `<div class="flex flex-wrap gap-1.5 mb-5">` + 
+                        app.features.map(f => `<span class="px-2.5 py-1 rounded-lg bg-slate-900/90 text-teal-400 text-[11px] font-semibold border border-teal-500/20 shadow-sm">${f}</span>`).join('') + 
+                        `</div>`;
+                }
+
+                card.innerHTML = `
+                    <div class="h-48 overflow-hidden relative bg-slate-950">
+                        <img src="${app.image}" alt="${app.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-60"></div>
+                        <div class="absolute top-3.5 right-3.5 bg-slate-950/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-teal-400 border border-slate-800 shadow-lg">
+                            ${app.category}
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-black text-white mb-2.5 group-hover:text-teal-300 transition-colors">${app.name}</h3>
+                        <p class="text-xs sm:text-sm text-slate-300/80 mb-5 leading-relaxed font-light">${app.desc}</p>
+                        ${featuresHtml}
+                        <div class="mt-auto pt-4 border-t border-slate-800/80 flex items-center gap-2.5">
+                            <a href="${app.url}" target="_blank" class="flex-grow bg-teal-500 hover:bg-teal-400 text-slate-950 font-extrabold py-2.5 px-4 rounded-xl text-center text-xs sm:text-sm transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-teal-950/50 hover:shadow-teal-500/20 hover:scale-[1.01] active:scale-100">
+                                <i data-lucide="external-link" class="w-4 h-4"></i> Apri App
+                            </a>
+                            <button onclick="openPwaModal('${app.name}', '${app.url}', '${app.desc}')" class="bg-slate-900 hover:bg-slate-800 text-slate-200 p-2.5 rounded-xl border border-slate-700/80 transition-all duration-300 hover:border-teal-500/50 shadow-md hover:scale-105 active:scale-100" title="Installa e QR Code">
+                                <i data-lucide="qr-code" class="w-4 h-4 text-teal-400"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+            lucide.createIcons();
+        }
+
+        function filterApps(category) {
+            currentFilter = category;
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                if (btn.textContent.includes(category) || (category === 'all' && btn.textContent === 'Tutte')) {
+                    btn.className = "category-btn active px-3.5 py-2 rounded-lg text-xs font-bold bg-teal-500 text-slate-950 shadow-md transition-all duration-300";
+                } else {
+                    btn.className = "category-btn px-3.5 py-2 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800/60 transition-all duration-300";
+                }
+            });
+            renderApps();
+        }
+
+        function openPwaModal(name, url, desc) {
+            document.getElementById('modal-app-title').textContent = name;
+            document.getElementById('modal-app-desc').textContent = desc;
+            const launchBtn = document.getElementById('modal-launch-btn');
+            launchBtn.href = url;
+            
+            const qrContainer = document.getElementById('qrcode-container');
+            qrContainer.innerHTML = '';
+            new QRCode(qrContainer, {
+                text: url,
+                width: 160,
+                height: 160,
+                colorDark: "#021a19",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+            });
+
+            const modal = document.getElementById('pwa-modal');
+            const content = document.getElementById('modal-content');
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                content.classList.remove('scale-95');
+                content.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closePwaModal() {
+            const modal = document.getElementById('pwa-modal');
+            const content = document.getElementById('modal-content');
+            content.classList.remove('scale-100');
+            content.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 200);
+        }
+
+        window.addEventListener('DOMContentLoaded', initApp);
+    </script>
+</body>
+</html>
